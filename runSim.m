@@ -76,7 +76,7 @@ while RMSSO4 > steadyStateLimit
   %end
 
   %% Capture data at intervals seperated by an order of magnitude in time.
-  if i == (i_lastSample + 1) * 5
+  if i == i_lastSample + 250000 || i == 2500 || i==5000 || i == 10000 || i== 50000 || i== 100000 || i==125000 || i==150000 || i==175000 || i==200000 || i==225000
     record_32 = horzcat(record_32, SO4_32);
     record_33 = horzcat(record_33, SO4_33);
     record_34 = horzcat(record_34, SO4_34);
@@ -85,7 +85,10 @@ while RMSSO4 > steadyStateLimit
     record_CH4 = horzcat(record_CH4, CH4);
     record_SO4 = horzcat(record_SO4, SO4);
 
-    i_lastSample = i_lastSample + 50000;
+
+    if i == i_lastSample + 250000
+      i_lastSample = i_lastSample + 250000;
+    end
 
     i
     RMSSO4
@@ -125,7 +128,7 @@ outputd18_off2 = outputd18(2:end, :); % Offset forward.
 outputd34_off1 = outputd18(1:end-1, :); % No offset.
 outputd34_off2 = outputd18(2:end, :); % Offset forward.
 
-% Data cleaning loop.
+% Data cleaning loop. At the first incidence of a decreasing profile, set the rest of the column from there is set to NaN.
 cleanLoop = 1;
 for cleanLoop = 1:size(outputd18_off1, 2)
     ind_18 = find(((outputd18_off2(:, cleanLoop) - outputd18_off1(:, cleanLoop)) < 0), 1, 'first');
@@ -157,11 +160,18 @@ if steadyStateSwitch == 0
     case 3
       %% Change logical variables.
       i = 0;
-      i_lastSample = 1;
+      i_lastSample = 0;
       steadyStateSwitch = 1;  % Prevent the parameter change from running again upon reaching steady state a second time.
       RMSSO4 = 1;             % Ensure another loop occurs and that it doesn't immediately drop out of the loop.
-      steadyStateLimit = eps; % Have a think about the best way to deal with this.
+      steadyStateLimit = eps * 10 ^ (-1); % Have a think about the best way to deal with this.
 
+      prerecord_32 = record_32;
+      prerecord_33 = record_33;
+      prerecord_34 = record_34;
+      prerecord_16 = record_16;
+      prerecord_18 = record_18;
+      prerecord_CH4 = record_CH4;
+      prerecord_SO4 = record_SO4;
 
       %% Reinitialise record of isotopes.
       record_32 = [];
@@ -180,11 +190,18 @@ if steadyStateSwitch == 0
     case 4
       %% Change logical variables.
       i = 0;
-      i_lastSample = 1;
+      i_lastSample = 0;
       steadyStateSwitch = 1;  % Prevent the parameter change from running again upon reaching steady state a second time.
       RMSSO4 = 1;             % Ensure another loop occurs and that it doesn't immediately drop out of the loop.
       steadyStateLimit = eps * 10 ^ (-1); % Have a think about the best way to deal with this.
 
+      prerecord_32 = record_32;
+      prerecord_33 = record_33;
+      prerecord_34 = record_34;
+      prerecord_16 = record_16;
+      prerecord_18 = record_18;
+      prerecord_CH4 = record_CH4;
+      prerecord_SO4 = record_SO4;
 
       %% Reinitialise record of isotopes.
       record_32 = [];
@@ -193,6 +210,7 @@ if steadyStateSwitch == 0
       record_16 = [];
       record_18 = [];
       record_CH4 = [];
+      record_SO4 = [];
 
 
       %% Change sulphur concentration at top of array and change isotope splits in that block to reflect new concentration.

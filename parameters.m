@@ -38,7 +38,7 @@ b_O = OSR_t * recycling;  % Reaction velocity. Recycling defined at top of main.
 %% Environmental parameters.
 porosity = 0.8; % Porosity of the medium.
 temp = 14;
-dif = 5.7e-6 * 3600 * temp * 2;  % We have chosen diffusion to be constant with depth.
+dif = 5.7e-6 * 3600 * temp;  % We have chosen diffusion to be constant with depth.
 %dif = (4.655 + 0.2125 * temp) * 10^(-6) * 3600 ;  % cm^2/hr We have chosen diffusion to be constant with depth.
 SO4_sw = 27;               % Seawater SO4 concentration in umole cm-3.
 

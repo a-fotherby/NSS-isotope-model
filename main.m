@@ -8,7 +8,7 @@ parameters;
 initialise;
 
 %% Call the script which will change the model parameters for the chosen test case.
-case1
+case3
 
 
 %% Initialise figures for plotting.
