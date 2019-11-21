@@ -9,11 +9,13 @@ classdef plotOutput
             plotNum = size(d34, 2)
             cc = jet(plotNum - 1)
 
-            while l < plotNum
+            plot(d34(:,l),d18(:,l), 'k-.', 'LineWidth', 2.0, 'DisplayName', 'Initial State');
+            l = l + 1
+            
+            while l < plotNum 
                 plot(d34(:,l),d18(:,l), 'color', cc(l, :), 'DisplayName', sprintf('%0.3f %%',lables(1,l)))
 
                 l = l +1
-                pause(1);
             end
 
             while l == plotNum
@@ -39,7 +41,6 @@ classdef plotOutput
             while l < plotNum
                 plot(d34(:,l),depth(:,1), 'color', cc(l, :), 'DisplayName', sprintf('%0.3f %%', lables(1,l)))
                 l = l +1
-                pause(0.1);
             end
 
             while l == plotNum

@@ -23,3 +23,7 @@ record_16 = [];
 record_18 = [];
 record_CH4 = [];
 record_SO4 = [];
+
+%% Delete some of the final output variables.
+clearvars outputd18;
+clearvars outputd34;

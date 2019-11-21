@@ -1,4 +1,3 @@
-
 %% Initialise logical variables. We discretise the column into cm elements.
 l = 1000;               % Column length.
 dz = sqrt(2);           % Space step /cm.
@@ -9,15 +8,14 @@ i_lastSampleCL = 0;
 i_lastSample = 0;       % Ensure that dataCapture is triggered on first iteration.
 count = 0;              % Initialise counting for dataCapture.
 steadyStateSwitch = 0;  % Logical variable for switching the conditions once a test case reaches steady state.
-steadyStateLimit = eps; % How much root mean square variation between interations before the program stops (i.e. what do we consider to be steady state).
+steadyStateLimit = 0.000001; % How much root mean square variation between interations before the program stops (i.e. what do we consider to be steady state).
 
 
 %% Mechanism parameters.
-recycling = 10; % Determines ratio of reduction to equilibreum exchange occuring.
+recycling = 0; % Determines ratio of reduction to equilibreum exchange occuring.
 
-% Organic sulphate Reduction (OSR) mechanism parameters.
+%% Organic sulphate Reduction (OSR) mechanism parameters.
 OSR_t = 0.00002;                 % Total sulphate production rate.
-%OSR_t = 1.912280 * 10^(-6)};      % Total sulphate production rate.
 alpha34 = 0.975 - 0.05 * (recycling / (recycling + 1));
 alpha33 = alpha34 ^ 0.5145;
 

@@ -1,3 +1,4 @@
+
 classdef rmsCalc
     methods(Static)
         function [rmsArray] = calculate(inputMatrix)
