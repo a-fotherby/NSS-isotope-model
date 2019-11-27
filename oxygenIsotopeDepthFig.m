@@ -1,11 +1,12 @@
 tiledlayout(4,2);
 
+load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/rec=0/case1.mat')
+
 depth = 1:l;
 depth = depth .* sqrt(2);
 depth = depth';
 
 nexttile()
-load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/rec=0/case1.mat')
 labels = labelGen(record_32, record_33, record_34);
 plotOutput.depthPlot(outputd18, depth, labels);
 % Format graph.

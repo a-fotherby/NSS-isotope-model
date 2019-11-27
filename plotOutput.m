@@ -37,6 +37,9 @@ classdef plotOutput
             l = 1
             plotNum = size(d34, 2)
             cc = jet(plotNum - 1)
+            
+            plot(d34(:,l),depth(:,l), 'k-.', 'LineWidth', 2.0, 'DisplayName', 'Initial State');
+            l = l + 1
 
             while l < plotNum
                 plot(d34(:,l),depth(:,1), 'color', cc(l, :), 'DisplayName', sprintf('%0.3f %%', lables(1,l)))

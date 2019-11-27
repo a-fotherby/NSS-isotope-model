@@ -58,13 +58,14 @@ while RMSSO4 > steadyStateLimit
 
     %% Find RMS over column for loop condition.
     RMSSO4 = sqrt(sum((SO4 - SO4_b) .^ 2));
-    if i==1
-        RMSSO4_first = RMSSO4
+    if i == 1
+        initRMSSO4 = RMSSO4;
     end
-
+    
+    pProgress = (initRMSSO4 - RMSSO4) / (initRMSSO4 - steadyStateLimit) * 100
 
   %% Capture data at intervals seperated by an order of magnitude in time.
-    recordProfileTime;
+    recordProfileRMS;
 
   %% Plotting.
     if i/10000==round(i/10000) % Plotting every 1000 years.
@@ -82,6 +83,8 @@ record_16 = horzcat(record_16, SO4_16);
 record_18 = horzcat(record_18, SO4_18);
 record_CH4 = horzcat(record_CH4, CH4);
 record_SO4 = horzcat(record_SO4, SO4);
+record_i = horzcat(record_i, i);
+record_RMS = horzcat(record_RMS, RMSSO4);
 
 % Create delta18 and delta34 matricies for output.
 outputd18 = (((record_18 ./ record_16) / R18vsmow) - 1) * 1000;

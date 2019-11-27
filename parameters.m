@@ -10,9 +10,12 @@ count = 0;              % Initialise counting for dataCapture.
 steadyStateSwitch = 0;  % Logical variable for switching the conditions once a test case reaches steady state.
 steadyStateLimit = 0.000001; % How much root mean square variation between interations before the program stops (i.e. what do we consider to be steady state).
 
+% Variables for capturing data by RMS progression.
+flag = 0;
+pProgressNext = 0;
 
 %% Mechanism parameters.
-recycling = 0; % Determines ratio of reduction to equilibreum exchange occuring.
+recycling = 10; % Determines ratio of reduction to equilibreum exchange occuring.
 
 %% Organic sulphate Reduction (OSR) mechanism parameters.
 OSR_t = 0.00002;                 % Total sulphate production rate.
