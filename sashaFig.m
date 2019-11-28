@@ -6,7 +6,10 @@ depth = 1:l;
 depth = depth .* sqrt(2);
 depth = depth';
 
-labels = labelGen(record_32, record_33, record_34);
+%labels = labelGen(record_32, record_33, record_34);
+
+
+labels = (initRMSSO4 - record_RMS) ./ (initRMSSO4 - steadyStateLimit) * 100;
 
 tiledlayout(2,2)
 

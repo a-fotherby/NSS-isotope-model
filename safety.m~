@@ -1,0 +1,15 @@
+classdef safety
+    methods(Static)
+        function concentration = concentration(species, speciesIsoSum)
+        %% Safety code for concentrations, deals with small concentration numerical instabilities.
+        limit = eps;                      % The smallest value to deal with in terms of concentration. The is the lower computation limit; concentrations below this are not meaningful.
+        concentration = species((speciesIsoSum) <= limit) = 0;
+        
+        SO4_sum((SO4_sum) <= limit) = 0;  % Any value below eps is set to zero.
+        SO4_32((SO4_sum) <= limit) = 0;
+        SO4_33((SO4_sum) <= limit) = 0;
+        SO4_34((SO4_sum) <= limit) = 0;
+        O_sum((O_sum) <= limit) = 0;
+        ORR16_t((O_sum) <= limit) = 0;
+        ORR18_t((O_sum) <= limit) = 0;
+        CH4((CH4) <= limit) = 0;
