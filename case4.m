@@ -14,3 +14,6 @@ SO4_34(:,1) = SO4 .* ((d34S_sw / 1000 + 1) * R34vcdt) / (1 + R33vcdt * (d33S_sw 
 % Oxygen.
 SO4_16(:,1) = SO4 .* (1 / (1 + R18vsmow * (d18O_sw / 1000 +1)));
 SO4_18(:,1) = SO4 .* (R18vsmow * (d18O_sw / 1000 +1) / (1 + R18vsmow * (d18O_sw / 1000 +1)));
+
+load('target4.mat')
+
