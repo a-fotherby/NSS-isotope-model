@@ -69,11 +69,13 @@ while RMSSO4 > steadyStateLimit
     
     %% Find RMS over column for loop condition.
     RMSSO4 = sqrt(sum((SO4 - SO4_b) .^ 2));
+    targetRMS = sqrt(sum((SO4 - target) .^ 2));
+    
     if i == 1
-        initRMSSO4 = RMSSO4;
+        initRMSSO4 = targetRMS;
     end
     
-    pProgress = (initRMSSO4 - RMSSO4) / (initRMSSO4 - steadyStateLimit) * 100
+    pProgress = (initRMSSO4 - targetRMS) / (initRMSSO4 - steadyStateLimit) * 100;
 
     
     %% Capture data at intervals. Two options - intervals in RMS or time.
@@ -83,6 +85,7 @@ while RMSSO4 > steadyStateLimit
     %% Plotting.
     if i/10000==round(i/10000) % Plotting every 1000 years.
         plotData
+        pProgress;
     end
 % End of main program loop.
 end
@@ -137,6 +140,8 @@ if steadyStateSwitch == 0
       prerecord_18 = record_18;
       prerecord_CH4 = record_CH4;
       prerecord_SO4 = record_SO4;
+      prerecord_i = record_i;
+      prerecord_RMS = record_RMS;
 
       %% Reinitialise record of isotopes.
       record_32 = [];
@@ -146,8 +151,12 @@ if steadyStateSwitch == 0
       record_18 = [];
       record_CH4 = [];
       record_SO4 = [];
-
+      record_i = [];
+      record_RMS = [];
       OSR_t = OSR_t / 10;
+      
+      pProgressNext = 0;
+      flag = 0;
 
       %% Start running the simulation again.
       runSim
@@ -167,6 +176,8 @@ if steadyStateSwitch == 0
       prerecord_18 = record_18;
       prerecord_CH4 = record_CH4;
       prerecord_SO4 = record_SO4;
+      prerecord_i = record_i;
+      prerecord_RMS = record_RMS;
 
       %% Reinitialise record of isotopes.
       record_32 = [];
@@ -176,6 +187,8 @@ if steadyStateSwitch == 0
       record_18 = [];
       record_CH4 = [];
       record_SO4 = [];
+      record_i = [];
+      record_RMS = [];
 
 
       %% Change sulphur concentration at top of array and change isotope splits in that block to reflect new concentration.
@@ -189,6 +202,9 @@ if steadyStateSwitch == 0
       SO4_16(1,1) = SO4(1,1).* (1 / (1 + R18vsmow * (d18O_sw / 1000 +1)));
       SO4_18(1,1) = SO4(1,1).* (R18vsmow * (d18O_sw / 1000 +1) / (1 + R18vsmow * (d18O_sw / 1000 +1)));
 
+      pProgressNext = 0;
+      flag = 0;
+      
       % Start running the simulation again.
       runSim
   end
