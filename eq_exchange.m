@@ -5,7 +5,7 @@ classdef eq_exchange
 
       %% Calculate fractionation in and out of mechanism.
       d18O_H2O = 0;                                                 % We assume delta-O-18 is zero in water.
-      delta_in = ((SO4_18 ./ SO4_16) - R18vsmow) / R18vsmow;
+      delta_in = (((SO4_18 ./ SO4_16) - R18vsmow) / R18vsmow) * 1000 ;
       delta_out = delta_in * (1 - k) + k * (d18O_H2O + enrichment);
 
 
