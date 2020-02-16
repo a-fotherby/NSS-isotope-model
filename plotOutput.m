@@ -1,7 +1,7 @@
 classdef plotOutput
     methods(Static)
         function [] = crossPlot(d34, d18, lables)
-            xlim([20 80])
+            xlim([20 150])
             ylim([8 21])
             hold on
 
