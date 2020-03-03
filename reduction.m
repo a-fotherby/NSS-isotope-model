@@ -63,8 +63,11 @@ classdef reduction
     function [SRR_16, SRR_18] = SRROcalc(SO4, SO4_16, SO4_18, alpha18, OSR_t)
       %% For oxygen rates are proportional to total organic sulphate reduction rate as in Wortmann 2007.
 
-      SRR_16 = (OSR_t * alpha18 * SO4_16) ./ (SO4 + (alpha18 - 1) .* SO4_16);
-      SRR_18 = (OSR_t * SO4_18) ./ (alpha18 * SO4 - (alpha18 - 1) .* SO4_18);
+      %SRR_16 = (alpha18 * SO4_16) ./ (SO4 + (alpha18 - 1) .* SO4_16) * OSR_t;
+      %SRR_18 = (SO4_18) ./ (alpha18 * SO4 - (alpha18 - 1) .* SO4_18) * OSR_t;
+      % Alterntively, try my own rate calculations.
+      SRR_16 = SO4_16 ./ (SO4_16 + alpha18 .* SO4_18) * OSR_t;
+      SRR_18 = (alpha18 .* SO4_18) ./ (SO4_16 + alpha18 .* SO4_18) * OSR_t;
 
       
       %% Reduction rates can not be negative.
