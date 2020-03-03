@@ -4,9 +4,9 @@ figure(f)
 %% Sums for plotting.
 SO4_sum = SO4_32 + SO4_34 + SO4_33;
 
-d18_SO4 = (((SO4_18 ./ SO4_16) - R18vsmow) / R18vsmow) * 1000;
-d34S_SO4 = (((SO4_34 ./ SO4_32) - R34vcdt) / R34vcdt) * 1000;
-d33S_SO4 = (((SO4_33 ./ SO4_32) - R33vcdt) / R34vcdt) * 1000;
+d18_SO4 = (((SO4_18 ./ SO4_16) / R18vsmow) - 1) * 1000;
+d34S_SO4 = (((SO4_34 ./ SO4_32) / R34vcdt) - 1) * 1000;
+d33S_SO4 = (((SO4_33 ./ SO4_32) / R33vcdt) - 1) * 1000;
 
 d18_SO4((d18_SO4) > 4e+05) = NaN;
 d34S_SO4((d34S_SO4) > 4e+05) = NaN;
