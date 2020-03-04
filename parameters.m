@@ -1,15 +1,14 @@
 %% Initialise logical variables. We discretise the column into cm elements.
-l = 1000;               % Column length.
-%dz = sqrt(2);           % Space step /cm.
-dz = 0.4;
-BCS = 1;                % Boundary conditions value. 1 for constant gradiant at bottom and constant concentration at top. 2 for const. conc. at bottom. Passed to iterate based on species.
-RMSSO4 = 1;             % Loop conditon. Initialise at 1 to ensure at least one loop.
-i = 0;                  % Plotting counter.
+l = 1000;                   % Column length.
+dz = 0.4;                   % Space step /cm.
+BCS = 1;                    % Boundary conditions value. 1 for constant gradiant at bottom and constant concentration at top. 2 for const. conc. at bottom. Passed to iterate based on species.
+RMSSO4 = 1;                 % Loop conditon. Initialise at 1 to ensure at least one loop.
+i = 0;                      % Plotting counter.
 i_lastSampleCL = 0;
-i_lastSample = 0;       % Ensure that dataCapture is triggered on first iteration.
-count = 0;              % Initialise counting for dataCapture.
-steadyStateSwitch = 0;  % Logical variable for switching the conditions once a test case reaches steady state.
-steadyStateLimit = 0.000001; % How much root mean square variation between interations before the program stops (i.e. what do we consider to be steady state).
+i_lastSample = 0;           % Ensure that dataCapture is triggered on first iteration.
+count = 0;                  % Initialise counting for dataCapture.
+steadyStateSwitch = 0;      % Logical variable for switching the conditions once a test case reaches steady state.
+steadyStateLimit = 0.000001;% How much root mean square variation between interations before the program stops (i.e. what do we consider to be steady state).
 
 % Variables for capturing data by RMS progression.
 flag = 0;
