@@ -1,13 +1,14 @@
 load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecorded/rec=0/case1.mat')
 
 depth = 1:l;
-depth = depth .* sqrt(2);
+depth = depth .* dz;
 depth = depth';
 tiledlayout(4,2);
 
 nexttile();
 %% Chemical concentration (left most graph).
 % Plot data.
+labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit);
 plotOutput.depthPlot(record_SO4, depth, labels);
 % Format graph.
 set(gca,'YDir','reverse', 'YLim',[0 l * dz],'XLim',[0 27],'XAxisLocation','Top');
@@ -17,6 +18,7 @@ title(gca, 'Sulfate concentration');
 legend('off')
 
 nexttile();
+labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit);
 plotOutput.depthPlot(outputd34, depth, labels);
 % Format graph.
 set(gca,'YDir','reverse','XLim',[20,100],'YLim',[0 l * dz], 'XAxisLocation', 'Top');
@@ -27,6 +29,7 @@ title(gca, 'Sulfur isotope composition');
 
 load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecorded/rec=0/case2.mat');
 nexttile();
+labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit);
 %% Chemical concentration (left most graph).
 % Plot data.
 plotOutput.depthPlot(record_SO4, depth, labels);
@@ -38,15 +41,17 @@ legend('off')
 
 
 nexttile();
+labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit);
 plotOutput.depthPlot(outputd34, depth, labels);
 % Format graph.
-set(gca,'YDir','reverse','XLim',[20,100],'YLim',[0 l * dz], 'XAxisLocation', 'Top');
+set(gca,'YDir','reverse','XLim',[20 100],'YLim',[0 l * dz], 'XAxisLocation', 'Top');
 xlabel(gca, '\delta^{34}S');
 ylabel(gca, 'Depth / cm');
 
 
 load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecorded/rec=0/case3.mat');
 nexttile();
+labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit);
 %% Chemical concentration (left most graph).
 % Plot data.
 plotOutput.depthPlot(record_SO4, depth, labels);
@@ -58,6 +63,7 @@ legend('off')
 
 
 nexttile();
+labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit);
 plotOutput.depthPlot(outputd34, depth, labels);
 % Format graph.
 set(gca,'YDir','reverse','XLim',[20,100],'YLim',[0 l * dz], 'XAxisLocation', 'Top');
@@ -69,6 +75,7 @@ load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecor
 nexttile();
 %% Chemical concentration (left most graph).
 % Plot data.
+labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit);
 plotOutput.depthPlot(record_SO4, depth, labels);
 % Format graph.
 set(gca,'YDir','reverse', 'YLim',[0 l * dz],'XLim',[0 27],'XAxisLocation','Top');
@@ -79,6 +86,7 @@ legend('off')
 % Select axis and plot data.
 
 nexttile();
+labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit);
 plotOutput.depthPlot(outputd34, depth, labels);
 % Format graph.
 set(gca,'YDir','reverse','XLim',[20,100],'YLim',[0 l * dz], 'XAxisLocation', 'Top');
