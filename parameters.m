@@ -15,10 +15,10 @@ flag = 0;
 pProgressNext = 0;
 
 %% Mechanism parameters.
-recycling = 10; % Determines ratio of reduction to equilibreum exchange occuring.
+recycling = 14; % Determines ratio of reduction to equilibreum exchange occuring.
 
 %% Organic sulphate Reduction (OSR) mechanism parameters.
-OSR_t = 0.00002;                 % Total sulphate production rate.
+OSR_t = 0.00002;                 % Total sulphate reduction rate. mM/hour
 alpha34 = 0.975 - 0.05 * (recycling / (recycling + 1));
 alpha33 = alpha34 ^ 0.5146;
 
