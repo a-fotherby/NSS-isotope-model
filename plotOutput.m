@@ -10,20 +10,16 @@ classdef plotOutput
             cc = jet(plotNum - 1)
 
             plot(d34(:,l),d18(:,l), 'k-.', 'LineWidth', 2.0, 'DisplayName', 'Initial State');
-            l = l + 1
+            l = l + 2
             
             while l < plotNum 
-                plot(d34(:,l),d18(:,l), 'color', cc(l, :), 'DisplayName', sprintf('%0.3f %%',lables(1,l)))
+                plot(d34(:,l),d18(:,l), 'color', cc(l, :), 'DisplayName', sprintf('%.0f %%',lables(1,l)))
 
-                l = l +1
+                l = l + 2
             end
 
-            while l == plotNum
+            plot(d34(:,end),d18(:,end), 'k--', 'LineWidth', 2.0, 'DisplayName', 'Steady State');
 
-                plot(d34(:,l),d18(:,l), 'k--', 'LineWidth', 2.0, 'DisplayName', 'Steady State');
-                l = l + 1;
-
-            end
             lgd = legend('location', 'bestoutside');
             lgd.Title.String = 'Percentage progress to steady-state';
             lgd.NumColumns = 2;
@@ -39,19 +35,14 @@ classdef plotOutput
             cc = jet(plotNum - 1)
             
             plot(d34(:,l),depth(:,l), 'k-.', 'LineWidth', 2.0, 'DisplayName', 'Initial State');
-            l = l + 1
+            l = l + 2
 
             while l < plotNum
                 plot(d34(:,l),depth(:,1), 'color', cc(l, :), 'DisplayName', sprintf('%0.3f %%', lables(1,l)))
-                l = l +1
+                l = l + 2
             end
-
-            while l == plotNum
-
-                plot(d34(:,l),depth(:,1), 'k--', 'LineWidth', 2.0, 'DisplayName', 'Steady State');
-                l = l + 1;
-
-            end
+            
+            plot(d34(:,end),depth(:,end), 'k--', 'LineWidth', 2.0, 'DisplayName', 'Steady State');
 
             lgd = legend('location', 'bestoutside');
             lgd.Title.String = 'Percentage progress to steady-state';
