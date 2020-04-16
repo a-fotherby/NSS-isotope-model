@@ -13,15 +13,6 @@ set(g,'Units','normal','Position',[0.1 0.2 0.8 0.7])
 
 hold on
 
-n=1;
-funSum = @(x) sinc( (n * pi)/ (2 * 1002) ) * (sin(n * k * x) / (n^3)) * ((16 * f * L^2) / (D * pi^3)) + BC;
-n = n+2;
-%while n < 1000
-%    fun2 = @(x) sinc( (n * pi)/ (2 * 1002) ) * (sin(n * k * x) / (n^3)) * ((16 * f * L^2) / (D * pi^3));
-%    funSum = @(x) funSum(x) + fun2(x);
-%    n = n + 2
-%end
-
 fun = @(x) ((f * L) / D) * x + BC - (f / (2*D)) * x.^2 
 
 fplot(fun)

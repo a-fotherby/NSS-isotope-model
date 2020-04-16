@@ -1,4 +1,6 @@
-t = tiledlayout(4,2);
+t = tiledlayout(2, 4, 'TileSpacing', 'compact', 'Padding', 'compact');
+xlabel(t, '\delta^{34}S')
+ylabel(t, '\delta^{18}O')
 
 load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecorded/rec=0/case1.mat')
 
@@ -6,88 +8,79 @@ depth = 1:l;
 depth = depth .* dz;
 depth = depth';
 
-nexttile()
-load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecorded/rec=0/case1.mat')
+nexttile(1)
 labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit); 
 plotOutput.crossPlot(outputd34, outputd18, labels);
 set(gca, 'YLim', [8 22], 'XLim', [20 80]);
-xlabel(gca, '\delta^{34}S')
-ylabel(gca, {'Case 1' '\delta^{18}O'})
-title('Recycling = 0')
+ylabel(gca, 'Recycling = 0', 'FontWeight', 'bold');
+title('Case 1')
 legend('off')
 axis square
 
-nexttile()
+nexttile(5)
 load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecorded/rec=14/case1.mat')
 labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit); 
 plotOutput.crossPlot(outputd34, outputd18, labels);
 set(gca, 'YLim', [8 22], 'XLim', [20 120]);
-xlabel(gca, '\delta^{34}S')
-ylabel(gca, '\delta^{18}O')
-title('Recyling = 14')
+ylabel(gca, 'Recycling = 14', 'FontWeight', 'bold');
+legend('off')
 axis square
 
-
-nexttile()
+nexttile(2)
 load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecorded/rec=0/case2.mat')
 labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit); 
 plotOutput.crossPlot(outputd34, outputd18, labels);
 set(gca, 'YLim', [8 22], 'XLim', [20 80]);
-xlabel(gca, '\delta^{34}S')
-ylabel(gca, {'Case 2' '\delta^{18}O'})
+title('Case 2');
 legend('off')
 axis square
 
 
-nexttile()
+nexttile(6)
 load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecorded/rec=14/case2.mat')
 labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit); 
 plotOutput.crossPlot(outputd34, outputd18, labels);
 set(gca, 'YLim', [8 22], 'XLim', [20 120]);
-xlabel(gca, '\delta^{34}S')
-ylabel(gca, '\delta^{18}O')
+legend('off')
 axis square
 
 
 
-nexttile()
+nexttile(3)
 load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecorded/rec=0/case3.mat')
 labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit); 
 plotOutput.crossPlot(outputd34, outputd18, labels);
 set(gca, 'YLim', [8 22], 'XLim', [20 80]);
-xlabel(gca, '\delta^{34}S')
-ylabel(gca, {'Case 3' '\delta^{18}O'})
+title('Case 3');
 legend('off')
 axis square
 
 
 
-nexttile()
+nexttile(7)
 load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecorded/rec=14/case3.mat')
 labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit); 
 plotOutput.crossPlot(outputd34, outputd18, labels);
 set(gca, 'YLim', [8 22], 'XLim', [20 120]);
-xlabel(gca, '\delta^{34}S')
-ylabel(gca, '\delta^{18}O')
+legend('off')
 axis square
 
-
-nexttile()
+nexttile(4)
 load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecorded/rec=0/case4.mat')
 labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit); 
 plotOutput.crossPlot(outputd34, outputd18, labels);
 set(gca, 'YLim', [8 22], 'XLim', [20 80]);
-xlabel(gca, '\delta^{34}S')
-ylabel(gca, {'Case 4' '\delta^{18}O'})
+title('Case 46');
 legend('off')
 axis square
 
 
-nexttile()
+nexttile(8)
 load('/Users/angus/Dropbox/Academic/Isotope Model/Model/Case Data/pProgressRecorded/rec=14/case4.mat')
 labels = labelGen.percentageProgress(initRMSSO4, record_RMS, steadyStateLimit); 
 plotOutput.crossPlot(outputd34, outputd18, labels);
 set(gca, 'YLim', [8 22], 'XLim', [20 120]);
-xlabel(gca, '\delta^{34}S')
-ylabel(gca, '\delta^{18}O')
+legend('off')
 axis square
+
+exportgraphics(t, '/Users/angus/Dropbox/Academic/Isotope Model/Writeup/Figures/crossplots.eps', 'ContentType', 'vector');
